@@ -1214,10 +1214,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "66e266d7bc40cf84fd9eb4564401bc51"
-    },
-    "downloader.R": {
-      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+      "checksum": "9d253c39179eefa0d3147e73215f6224"
     },
     "LICENSE": {
       "checksum": "0ccf775105029d6159a0f81d992aa92e"
@@ -1229,46 +1226,46 @@
       "checksum": "19e8884aa8eee180c66ca293e19f1eaa"
     },
     "www/a.m4a": {
-      "checksum": "bfddecf257b58e357d39c6d08a365e3f"
+      "checksum": "4738b7f455f308ee9540a9feab19eb25"
     },
     "www/are.m4a": {
       "checksum": "c82b1147e9468a130daaa430a898f8f3"
     },
     "www/ask.m4a": {
-      "checksum": "25a377706ca8c21b769cf2f4baac0122"
+      "checksum": "6fde34b165322cae75a10927c61d9910"
     },
     "www/be.m4a": {
-      "checksum": "d4037962f893f6ca46785c9cb8f22a17"
+      "checksum": "1e265d44ca06ac0333ad1f14c3822abb"
     },
     "www/by.m4a": {
-      "checksum": "1e08eadd8e783b50d874a2f0201fba9a"
+      "checksum": "f69f6e3a560475a7f052abef2fa500ef"
     },
     "www/come.m4a": {
       "checksum": "4da40944dccbf0c0ab56f2b84558eba8"
     },
     "www/do.m4a": {
-      "checksum": "046a7aa8973494ac75250709edb0cf91"
+      "checksum": "8b5365176c5ed8294885a0cce4648f1e"
     },
     "www/friend.m4a": {
-      "checksum": "3dcc4cd5b4b01687cc4d116de3f214cd"
+      "checksum": "971c868b60e169a0499c8f2e6b224e35"
     },
     "www/full.m4a": {
-      "checksum": "e166bb11c7fa0c136e186de26b3e7f41"
+      "checksum": "df69019dfd74ec2ee11176b2d05bead7"
     },
     "www/go.m4a": {
-      "checksum": "958c34b8620047fcb9aeb9d30ec4a1b5"
+      "checksum": "8481d5eb561f8209fbd257af4c435332"
     },
     "www/has.m4a": {
-      "checksum": "05e2ee78ac9fa1bb49418eb5e361412a"
+      "checksum": "7220c0e957b7801a49a83f0a5f0481a1"
     },
     "www/he.m4a": {
-      "checksum": "c7a8542db3ad4eadd0b2f69f883810ef"
+      "checksum": "eaf8915cd8a3e460078d844fac10964b"
     },
     "www/here.m4a": {
-      "checksum": "03cbbbde5dd63efcdd647cb56ab4bebe"
+      "checksum": "623c8755fa3a27021946a63b564a6c73"
     },
     "www/his.m4a": {
-      "checksum": "feb74f2a920de0dc035d968129704c74"
+      "checksum": "60c52ec33f308ee6696652587f162322"
     },
     "www/house.m4a": {
       "checksum": "537ab2bd98618747b6de02b0de1677fb"
@@ -1277,94 +1274,94 @@
       "checksum": "4d344e5f007850857e8ae7650a315b00"
     },
     "www/i.m4a": {
-      "checksum": "eb0906e5c913943f117c2099d1d29039"
+      "checksum": "60d0ab3fd907a1011fdf87d1642fadc2"
     },
     "www/is.m4a": {
-      "checksum": "9f64908e5efe8e2fea5ea22512780320"
+      "checksum": "31176ff5303bcb6ebc8694ef405931a5"
     },
     "www/love.m4a": {
-      "checksum": "776172351d4639ad5a3a98919b270d3d"
+      "checksum": "e813e5fe2ddce3baac6bf0293b3049b5"
     },
     "www/me.m4a": {
-      "checksum": "cc59930c799ec7231193c9533a49f03f"
+      "checksum": "fcf53553f45308ba945fa16db58f3797"
     },
     "www/my.m4a": {
-      "checksum": "729a3a3d10e4c096cb29d8b7588932b9"
+      "checksum": "74c05ba93885adf2daf38504cfb3863a"
     },
     "www/no.m4a": {
-      "checksum": "88ee70d7074b556f7ee3bcf14a91d1c1"
+      "checksum": "3df3173a493a1e6bc5debb69db951088"
     },
     "www/of.m4a": {
-      "checksum": "60865a934548f000ba67b6481017bb36"
+      "checksum": "22062d7c38d89a259a378c6b947d923b"
     },
     "www/once.m4a": {
-      "checksum": "f5fd0ec8a3f6b62584bfe758c27c0148"
+      "checksum": "b189a7c26ddc0342b2a375599deb5c6f"
     },
     "www/one.m4a": {
-      "checksum": "59d3addf38c0cfff00cce53eae502e31"
+      "checksum": "178d2fccb9b443f5457136dbcb889035"
     },
     "www/our.m4a": {
-      "checksum": "42fd7f8d7d162a29fd7988ce8fcb10ee"
+      "checksum": "e82c9e0417e7f08ea24161e8f9203b04"
     },
     "www/pull.m4a": {
-      "checksum": "6defc563474740d8c45719d0193164ee"
+      "checksum": "1c077c721467174198bb723cd83d754c"
     },
     "www/push.m4a": {
-      "checksum": "ee929ff13de662c5f29b7d4b857d5c68"
+      "checksum": "1b9b4e0cc057f1c37eb88cb55ed3f057"
     },
     "www/put.m4a": {
-      "checksum": "e879d1d2b97bd4d52f7bbc995f183e1c"
+      "checksum": "a8ca342acad51b2fd4fb79d8877ea69a"
     },
     "www/said.m4a": {
-      "checksum": "fa927c14f24712b6ec60344041726cdf"
+      "checksum": "25977d5ef2414dd4ef8cd6301fd7f063"
     },
     "www/says.m4a": {
-      "checksum": "83a6ff1f71b4f23dfd760f0748c5e9a4"
+      "checksum": "ebda2a128835f7d1ac6744d58bb8b995"
     },
     "www/school.m4a": {
-      "checksum": "bed5e72b05bd430a9c2385e6e7410e2e"
+      "checksum": "ea58f361e923850f10f4a245a536231e"
     },
     "www/she.m4a": {
-      "checksum": "15d47f4f7fe9624bdf7f7e371bc3ba8f"
+      "checksum": "6408c48fcec6f3eade8b00d96d021eff"
     },
     "www/so.m4a": {
-      "checksum": "097f9070e3867a28754c1b67eb0c1801"
+      "checksum": "e7788cd7145a64a5827bbcb715a22843"
     },
     "www/some.m4a": {
-      "checksum": "db5778059c934521b4bb0a289422af3d"
+      "checksum": "57fe72430cf1ade666644442b2f5c3bc"
     },
     "www/the.m4a": {
       "checksum": "e91f7f759c36fc08803779a230b6136a"
     },
     "www/there.m4a": {
-      "checksum": "7377f0849bcb1ddfcd145e1497f3fcdf"
+      "checksum": "1514057ff6929a5ab8dff808802c8d48"
     },
     "www/they.m4a": {
-      "checksum": "3ead5d7cc0c5c8c2b3ab324dc173d628"
+      "checksum": "6691e22764829408375c38cd2bf8b386"
     },
     "www/to.m4a": {
-      "checksum": "677e36b6dfa1c2ecd3bd26dbe6c46773"
+      "checksum": "8872d16afd1aa7c005f6f601e750b822"
     },
     "www/today.m4a": {
-      "checksum": "b355f0a71f75a326161eeb494bccac55"
+      "checksum": "a0392f0d662c216349cabcba599cfd71"
     },
     "www/was.m4a": {
-      "checksum": "a38eb6376b700c575bfed7bf2dae5998"
+      "checksum": "504e17dcd3042111b7a7e7b9a9edf7e8"
     },
     "www/we.m4a": {
-      "checksum": "311dffab2a7ba4b521a673444a47fc85"
+      "checksum": "54bad66b27555d62e6fdcc95c9360e2b"
     },
     "www/were.m4a": {
-      "checksum": "e4a6915a40dfc7f4c02fe1765ee6a34f"
+      "checksum": "6684a227f9681c636a69fc4886429d0f"
     },
     "www/where.m4a": {
-      "checksum": "260b3d025674e39983ccf95fb7ee3f85"
+      "checksum": "84f4c3deac2f8b9f6b0c2151e6369525"
     },
     "www/you.m4a": {
-      "checksum": "28428e552d3a44e360237b2d982f174f"
+      "checksum": "7a47c2d5ce0d3e8b2726544fb364da10"
     },
     "www/your.m4a": {
-      "checksum": "a5273e55fa5d741749d36fafaaca3ddb"
+      "checksum": "c8b5f22e80c263c3687fba284ec23ae0"
     }
   },
   "users": null

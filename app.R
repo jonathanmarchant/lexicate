@@ -1,6 +1,7 @@
 library(shiny)
 library(shinyjs)
 library(htmltools)
+library(bslib)
 
 jscode_enter <- '
 $(function() {
@@ -21,6 +22,16 @@ $(function() {
 '
 
 ui <- fluidPage(
+  theme = bs_theme(
+    bg = "#fffc36",
+    fg = "#ff0000",
+    primary = "#ffd501",
+    secondary = "#000000",
+    success = "#009E73",
+    base_font = font_google("Inter"),
+    code_font = font_google("JetBrains Mono")
+  ),
+
   tags$head(tags$script(HTML(jscode_enter))),
   tags$head(
       tags$style(
