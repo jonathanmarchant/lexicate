@@ -11,8 +11,9 @@ ui <- fluidPage(
       )
     ),
   shinyjs::useShinyjs(),
+  includeScript("www/howler.js"),
   wellPanel(
-    h2(textOutput("instruction")),
+    hidden(h2(textOutput("instruction"), id="h_instruction")),
     textInput("attempt", "Type the word here", ""),
     actionButton("doneButton", "Done"),
     actionButton("nextButton", "Next", disabled=TRUE),
@@ -41,6 +42,8 @@ server <- function(input, output, session) {
     show("outcome")
     if(input$attempt == target_word()) {
       enable("nextButton")
+    } else {
+      show("h_instruction")
     }
   })
 
@@ -48,6 +51,12 @@ server <- function(input, output, session) {
     disable("nextButton")
     updateTextInput(session, "attempt", value = "")
     hide("outcome")
+    hide("h_instruction")
+  })
+
+  observeEvent(target_word(), {
+    new_js <- stringr::str_c("var music = new Howl({src: ['", target_word(), ".m4a']});  music.play();")
+    shinyjs::runjs(new_js)
   })
 
 
