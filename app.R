@@ -1,7 +1,27 @@
 library(shiny)
 library(shinyjs)
+library(htmltools)
+
+jscode_enter <- '
+$(function() {
+  var $els = $("[data-proxy-click]");
+  $.each(
+    $els,
+    function(idx, el) {
+      var $el = $(el);
+      var $proxy = $("#" + $el.data("proxyClick"));
+      $el.keydown(function (e) {
+        if (e.keyCode == 13) {
+          $proxy.click();
+        }
+      });
+    }
+  );
+});
+'
 
 ui <- fluidPage(
+  tags$head(tags$script(HTML(jscode_enter))),
   tags$head(
       tags$style(
         "body{
@@ -14,10 +34,13 @@ ui <- fluidPage(
   includeScript("www/howler.js"),
   wellPanel(
     hidden(h2(textOutput("instruction"), id="h_instruction")),
-    textInput("attempt", "Type the word here", ""),
+    tagQuery(
+      textInput("attempt", "Type the word here", "")
+    )$find("input")$addAttrs("autocomplete" = "off", "autocapitalize" = "none", "spellcheck" = "false", "data-proxy-click" = "doneButton")$allTags(),
     actionButton("doneButton", "Done"),
     actionButton("nextButton", "Next", disabled=TRUE),
-    hidden(textOutput("outcome"))
+    hidden(textOutput("outcome")),
+
   )
 
 )
