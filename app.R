@@ -61,7 +61,8 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  counters <- reactiveValues(correct = 0, incorrect = 0)
+  counters <- reactiveValues(correct = 0, incorrect = 0, assistance = 0)
+  state <- reactiveValues(user="jrm")
 
   target_word <- reactive({ 
     input$nextButton
@@ -77,23 +78,33 @@ server <- function(input, output, session) {
     outcome_text()
 })
   
+  observeEvent(counters$assistance, {
+    if (counters$assistance == 0) {
+      hide("h_instruction")
+    } else {
+      show("h_instruction")
+    }
+  })
+  
   observeEvent(input$doneButton, {
     show("outcome")
     if(input$attempt == target_word()) {
-      enable("nextButton")
+      write_word_log(target_word(), counters$assistance, state$user, 1)
       counters$correct <- counters$correct + 1
+      enable("nextButton")
       disable("doneButton")
     } else {
-      show("h_instruction")
+      write_word_log(target_word(), counters$assistance, state$user, 0)
       counters$incorrect <- counters$incorrect + 1
+      counters$assistance = counters$assistance + 1
     }
   })
 
   observeEvent(input$nextButton, {
+    counters$assistance <- 0
     disable("nextButton")
     updateTextInput(session, "attempt", value = "")
     hide("outcome")
-    hide("h_instruction")
     enable("doneButton")
   })
 
