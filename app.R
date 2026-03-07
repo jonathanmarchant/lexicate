@@ -29,7 +29,8 @@ ui <- fluidPage(
     secondary = "#000000",
     success = "#009E73",
     base_font = font_google("Inter"),
-    code_font = font_google("JetBrains Mono")
+    code_font = font_google("JetBrains Mono"),
+    "min-contrast-ratio" = 1.1
   ),
 
   tags$head(tags$script(HTML(jscode_enter))),
@@ -50,13 +51,17 @@ ui <- fluidPage(
     )$find("input")$addAttrs("autocomplete" = "off", "autocapitalize" = "none", "spellcheck" = "false", "data-proxy-click" = "doneButton")$allTags(),
     actionButton("doneButton", "Done"),
     actionButton("nextButton", "Next", disabled=TRUE),
-    hidden(textOutput("outcome")),
-
+    hidden(textOutput("outcome"))
+  ),
+  wellPanel(
+    textOutput("ticks"),
+    textOutput("crosses")
   )
 
 )
 
 server <- function(input, output, session) {
+  counters <- reactiveValues(correct = 0, incorrect = 0)
 
   target_word <- reactive({ 
     input$nextButton
@@ -76,8 +81,11 @@ server <- function(input, output, session) {
     show("outcome")
     if(input$attempt == target_word()) {
       enable("nextButton")
+      counters$correct <- counters$correct + 1
+      disable("doneButton")
     } else {
       show("h_instruction")
+      counters$incorrect <- counters$incorrect + 1
     }
   })
 
@@ -86,12 +94,21 @@ server <- function(input, output, session) {
     updateTextInput(session, "attempt", value = "")
     hide("outcome")
     hide("h_instruction")
+    enable("doneButton")
   })
 
   observeEvent(target_word(), {
     new_js <- stringr::str_c("var music = new Howl({src: ['", target_word(), ".m4a']});  music.play();")
     shinyjs::runjs(new_js)
   })
+
+  output$ticks <- renderText(
+    stringr::str_c("Correct: ", strrep("🚂", counters$correct))
+  )
+
+  output$crosses <- renderText(
+    stringr::str_c("Incorrect: ", strrep("🚓", counters$incorrect))
+  )
 
 
 }
