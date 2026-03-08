@@ -17,7 +17,7 @@ y2_wordlist <- tibble(
   "steak", "sugar", "sure", "told", "water", "who", "whole", "wild", "would")) |> 
   mutate(difficulty = 2)
 
-create_wordlist <- function(min_difficulty = 1, max_difficulty = 1) {
+create_wordlist <- function(min_difficulty = 1, max_difficulty = 2) {
   bind_rows(y1_wordlist, y2_wordlist) |> 
     filter(difficulty >= min_difficulty & difficulty <= max_difficulty)
 }
