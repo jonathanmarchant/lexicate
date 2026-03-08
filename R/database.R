@@ -1,5 +1,6 @@
 library(DBI)
 library(dplyr)
+library(dbplyr)
 # Sys.setenv(POSTGRES_PASS = askpass::askpass())
 
 con <- dbConnect(RPostgres::Postgres(),
