@@ -1595,7 +1595,7 @@
       "checksum": "97b0dfe489652326420781dce9974d52"
     },
     "app.R": {
-      "checksum": "384844692c5cc48992e6b642c2b596ee"
+      "checksum": "0c98e76a78960c8d12984078aa1e3dbe"
     },
     "LICENSE": {
       "checksum": "0ccf775105029d6159a0f81d992aa92e"
@@ -1604,7 +1604,7 @@
       "checksum": "cf44ae295a7bbf46a6aa609fb2d7c3c2"
     },
     "R/words.R": {
-      "checksum": "c966efc237e12f7c9a5ca5b67148f240"
+      "checksum": "51c9a6fa57860521d775ebe74c62f156"
     },
     "README.md": {
       "checksum": "19e8884aa8eee180c66ca293e19f1eaa"
@@ -1612,23 +1612,101 @@
     "www/a.m4a": {
       "checksum": "4738b7f455f308ee9540a9feab19eb25"
     },
+    "www/after.m4a": {
+      "checksum": "bf42daae574e6622714a8d6599fa978a"
+    },
+    "www/again.m4a": {
+      "checksum": "c9cdf66d3a508c18220a90d2c07c46d6"
+    },
+    "www/any.m4a": {
+      "checksum": "763d6946d271617b6585ff62e13341db"
+    },
     "www/are.m4a": {
       "checksum": "c82b1147e9468a130daaa430a898f8f3"
     },
     "www/ask.m4a": {
       "checksum": "6fde34b165322cae75a10927c61d9910"
     },
+    "www/bath.m4a": {
+      "checksum": "6357aac8e2d93da9689ca95536728399"
+    },
     "www/be.m4a": {
       "checksum": "829744c1cb6fbdd0d21d5f5a54ec1bad"
+    },
+    "www/beautiful.m4a": {
+      "checksum": "2a3534e8a044a0269482033757f320d8"
+    },
+    "www/because.m4a": {
+      "checksum": "413cd62fbd18d549baf7f27a7d4b0b90"
+    },
+    "www/behind.m4a": {
+      "checksum": "d9161b89694791133c856389bf0446bf"
+    },
+    "www/both.m4a": {
+      "checksum": "87c1d173023d730b92ceed088309a826"
+    },
+    "www/break.m4a": {
+      "checksum": "3eef2f3731750f0d13fc6201b525dbe9"
+    },
+    "www/busy.m4a": {
+      "checksum": "794176969f994e28370579dca55aef53"
     },
     "www/by.m4a": {
       "checksum": "f69f6e3a560475a7f052abef2fa500ef"
     },
+    "www/child.m4a": {
+      "checksum": "62a5bd9db29693ce84f0975d2e224f13"
+    },
+    "www/children.m4a": {
+      "checksum": "cfbd9c6e8fff22e39f1aa9fb5f731846"
+    },
+    "www/class.m4a": {
+      "checksum": "d0bd34fb831ac1714b565785a261bab2"
+    },
+    "www/climb.m4a": {
+      "checksum": "18880b1ce3f73f02182c0a39d6489eed"
+    },
+    "www/clothes.m4a": {
+      "checksum": "835517cdd6ea3577cc293ddd4e95ad6b"
+    },
+    "www/cold.m4a": {
+      "checksum": "ef41f45b4c5e2af61446fdd31047991c"
+    },
     "www/come.m4a": {
       "checksum": "7d4bd5ce8540f2152f799a06c1648db3"
     },
+    "www/could.m4a": {
+      "checksum": "d918dd000ca1ccb6f8ae2991e4ad6f15"
+    },
     "www/do.m4a": {
       "checksum": "8b5365176c5ed8294885a0cce4648f1e"
+    },
+    "www/door.m4a": {
+      "checksum": "644306aa53bcfba222c74baacfc1b795"
+    },
+    "www/even.m4a": {
+      "checksum": "bd762264f6a2fb62b8823507de4fb72f"
+    },
+    "www/every.m4a": {
+      "checksum": "df505d307025774b632361b02bb2385e"
+    },
+    "www/everybody.m4a": {
+      "checksum": "1d6c36b2aef7a2aecdba8045178cd52b"
+    },
+    "www/eye.m4a": {
+      "checksum": "03dc5df744c0866ff02caa414dbf9887"
+    },
+    "www/fast.m4a": {
+      "checksum": "9f383da654afbd610550831a061f2800"
+    },
+    "www/father.m4a": {
+      "checksum": "633eaeb6bf33b85f056066ce9e0d84de"
+    },
+    "www/find.m4a": {
+      "checksum": "d21f29a9cb21db07a2254faa224d9013"
+    },
+    "www/floor.m4a": {
+      "checksum": "91e3949f781e4f8780970a46b64e1388"
     },
     "www/friend.m4a": {
       "checksum": "971c868b60e169a0499c8f2e6b224e35"
@@ -1638,6 +1716,18 @@
     },
     "www/go.m4a": {
       "checksum": "55cf88b71734ecc3541daa9a0cd2c3c5"
+    },
+    "www/gold.m4a": {
+      "checksum": "8825f258bc54512a39ab594dde303673"
+    },
+    "www/grass.m4a": {
+      "checksum": "e877581e9608ec851601116327cb29eb"
+    },
+    "www/great.m4a": {
+      "checksum": "fefa09b23555b1bf21e90fa754207f37"
+    },
+    "www/half.m4a": {
+      "checksum": "8b40e5e96e3cb51d0d57a9265c782c61"
     },
     "www/has.m4a": {
       "checksum": "7220c0e957b7801a49a83f0a5f0481a1"
@@ -1651,6 +1741,12 @@
     "www/his.m4a": {
       "checksum": "60c52ec33f308ee6696652587f162322"
     },
+    "www/hold.m4a": {
+      "checksum": "952252c4d64502c9b7a103098ec2b1d9"
+    },
+    "www/hour.m4a": {
+      "checksum": "4f43b642b59197d255050c23732fca28"
+    },
     "www/house.m4a": {
       "checksum": "537ab2bd98618747b6de02b0de1677fb"
     },
@@ -1660,14 +1756,44 @@
     "www/i.m4a": {
       "checksum": "60d0ab3fd907a1011fdf87d1642fadc2"
     },
+    "www/improve.m4a": {
+      "checksum": "9739917153a4d9f95df88912d6a069e2"
+    },
     "www/is.m4a": {
       "checksum": "31176ff5303bcb6ebc8694ef405931a5"
+    },
+    "www/kind.m4a": {
+      "checksum": "e16f14c4b758bfec4aec20c5a811086c"
+    },
+    "www/last.m4a": {
+      "checksum": "942a59f80e72d397c7b72e1ba007f464"
     },
     "www/love.m4a": {
       "checksum": "e813e5fe2ddce3baac6bf0293b3049b5"
     },
+    "www/many.m4a": {
+      "checksum": "f4d0fc742224581886f204fc02746803"
+    },
     "www/me.m4a": {
       "checksum": "fcf53553f45308ba945fa16db58f3797"
+    },
+    "www/mind.m4a": {
+      "checksum": "26f9a09c1f6329b7fd10337c91802c2c"
+    },
+    "www/money.m4a": {
+      "checksum": "168d17bf1b3cf642450d2a6c4b09a38e"
+    },
+    "www/most.m4a": {
+      "checksum": "b86eaa1bbf0ae4678a0002674373d80b"
+    },
+    "www/move.m4a": {
+      "checksum": "fe26e101677411dd5b9f527253d67830"
+    },
+    "www/mr.m4a": {
+      "checksum": "c1e7592f025b01602360d37b0fd5208d"
+    },
+    "www/mrs.m4a": {
+      "checksum": "9355697159a90a2099199194e6626f41"
     },
     "www/my.m4a": {
       "checksum": "74c05ba93885adf2daf38504cfb3863a"
@@ -1678,14 +1804,47 @@
     "www/of.m4a": {
       "checksum": "22062d7c38d89a259a378c6b947d923b"
     },
+    "www/old.m4a": {
+      "checksum": "4607c10056cc0a404a563979999ac07f"
+    },
     "www/once.m4a": {
       "checksum": "b189a7c26ddc0342b2a375599deb5c6f"
     },
     "www/one.m4a": {
       "checksum": "178d2fccb9b443f5457136dbcb889035"
     },
+    "www/only.m4a": {
+      "checksum": "0c4bca1a1b3b3fd6a6b071032fac4dd0"
+    },
     "www/our.m4a": {
       "checksum": "e82c9e0417e7f08ea24161e8f9203b04"
+    },
+    "www/parents.m4a": {
+      "checksum": "12d8ececb044112ecd35c5f612ffb2f6"
+    },
+    "www/pass.m4a": {
+      "checksum": "bb96a8139d862778e5ad1b39d6664bbc"
+    },
+    "www/past.m4a": {
+      "checksum": "56ea9d1389eb3cd6ecd84ceb3974ddb1"
+    },
+    "www/path.m4a": {
+      "checksum": "c77461995629ff88416ccbef68e7ae5f"
+    },
+    "www/people.m4a": {
+      "checksum": "9e37de8e9e82afc779514f6a4d057d40"
+    },
+    "www/plant.m4a": {
+      "checksum": "87a24a4af7aa350141948ae556a73fb6"
+    },
+    "www/poor.m4a": {
+      "checksum": "9f403439d527d7f89c1e80d7f83a2424"
+    },
+    "www/pretty.m4a": {
+      "checksum": "19c661410d9003bb909a4d9c048d3ec4"
+    },
+    "www/prove.m4a": {
+      "checksum": "e3a0cd9b794c08fe7cda47633fdd3fe0"
     },
     "www/pull.m4a": {
       "checksum": "170e4ffcf491606f3dd531d70edc5dd0"
@@ -1708,11 +1867,23 @@
     "www/she.m4a": {
       "checksum": "6408c48fcec6f3eade8b00d96d021eff"
     },
+    "www/should.m4a": {
+      "checksum": "1c2c7a057851eb308ccedb21b5dd4ea1"
+    },
     "www/so.m4a": {
       "checksum": "e7788cd7145a64a5827bbcb715a22843"
     },
     "www/some.m4a": {
       "checksum": "aed0073ba8c6684f0c129baac5a1b386"
+    },
+    "www/steak.m4a": {
+      "checksum": "201e3c5c2e25e986f2999a6eb99c54fd"
+    },
+    "www/sugar.m4a": {
+      "checksum": "a387939395372fc667ee8e01c2cad668"
+    },
+    "www/sure.m4a": {
+      "checksum": "f427ff251ea7f0b5078ac5e59b316f7d"
     },
     "www/the.m4a": {
       "checksum": "e91f7f759c36fc08803779a230b6136a"
@@ -1729,8 +1900,14 @@
     "www/today.m4a": {
       "checksum": "a0392f0d662c216349cabcba599cfd71"
     },
+    "www/told.m4a": {
+      "checksum": "d70c78643e01d421565cc2b585770a5d"
+    },
     "www/was.m4a": {
       "checksum": "504e17dcd3042111b7a7e7b9a9edf7e8"
+    },
+    "www/water.m4a": {
+      "checksum": "e746f5e6fc07bbcf0485ba7907f0b97e"
     },
     "www/we.m4a": {
       "checksum": "54bad66b27555d62e6fdcc95c9360e2b"
@@ -1740,6 +1917,18 @@
     },
     "www/where.m4a": {
       "checksum": "84f4c3deac2f8b9f6b0c2151e6369525"
+    },
+    "www/who.m4a": {
+      "checksum": "65d1b22636034f241e56e2333f67258a"
+    },
+    "www/whole.m4a": {
+      "checksum": "efa53bd11efdc084ecda86fc1899be69"
+    },
+    "www/wild.m4a": {
+      "checksum": "8122fd22b8204c29a62a29ff2667981a"
+    },
+    "www/would.m4a": {
+      "checksum": "63deec15da6d2b21805fc89b8404c6b7"
     },
     "www/you.m4a": {
       "checksum": "7a47c2d5ce0d3e8b2726544fb364da10"
