@@ -124,7 +124,7 @@ server <- function(input, output, session) {
   })
 
   observeEvent(target_word(), {
-    new_js <- stringr::str_c("var music = new Howl({src: ['", target_word(), ".m4a']});  music.play();")
+    new_js <- stringr::str_c("var music = new Howl({src: ['", stringr::str_to_lower(target_word()) , ".m4a']});  music.play();")
     shinyjs::runjs(new_js)
   })
 
