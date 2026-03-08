@@ -1,4 +1,5 @@
 library(DBI)
+library(dplyr)
 # Sys.setenv(POSTGRES_PASS = askpass::askpass())
 
 con <- dbConnect(RPostgres::Postgres(),
@@ -8,7 +9,7 @@ con <- dbConnect(RPostgres::Postgres(),
                  user = 'lexicate',
                  password = Sys.getenv("POSTGRES_PASS"))
 
-write_word_log <- function(word, assistance_level = 0, user = "jrm", success = 1) {
+write_word_log <- function(con, word, assistance_level = 0, user = "jrm", success = 1, local_word_log) {
   row = tibble::tibble(
     event_datetime = lubridate::now(),
     user = user,
@@ -17,6 +18,18 @@ write_word_log <- function(word, assistance_level = 0, user = "jrm", success = 1
     success_indicator = success)
   
   purrr::safely(dbAppendTable(con, SQL('"lexdata"."wordlog"'), row))
-  return(invisible(TRUE))
+  
+  bind_rows(local_word_log, row)
+}
+
+get_word_log <- function(con, wordlist, selected_user) {
+  word_vector <- wordlist |> pull("word")
+
+  word_log <- tbl(con, I("lexdata.wordlog")) |> 
+    filter(user == selected_user) |> 
+    filter(word %in% word_vector) |> 
+    collect()
+
+  word_log
 }
 

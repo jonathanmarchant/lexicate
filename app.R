@@ -3,6 +3,8 @@ library(shinyjs)
 library(htmltools)
 library(bslib)
 
+local_word_log <- get_word_log(con, wordlist, "jrm")
+
 jscode_enter <- '
 $(function() {
   var $els = $("[data-proxy-click]");
@@ -61,12 +63,15 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  counters <- reactiveValues(correct = 0, incorrect = 0, assistance = 0)
-  state <- reactiveValues(user="jrm")
+  counters <- reactiveValues(correct = 0, incorrect = 0)
+  session_state <- reactiveValues(user = "jrm")
+  task_state <- reactiveValues(assistance = 0, answer_found = 0)
 
   target_word <- reactive({ 
     input$nextButton
-    sample(wordlist, 1)
+    local_word_log |> 
+      summarise_word_log(wordlist) |> 
+      choose_word()
   })
   output$instruction <- renderText({ c("Spell ", target_word()) })
 
@@ -78,34 +83,44 @@ server <- function(input, output, session) {
     outcome_text()
 })
   
-  observeEvent(counters$assistance, {
-    if (counters$assistance == 0) {
+  observeEvent(task_state$assistance, {
+    if (task_state$assistance == 0) {
       hide("h_instruction")
     } else {
       show("h_instruction")
     }
   })
+
+  observeEvent(task_state$answer_found, {
+    if (task_state$answer_found == 0) {
+      enable("doneButton")
+      disable("nextButton")
+    } else {
+      disable("doneButton")
+      enable("nextButton")
+    }
+  })
   
   observeEvent(input$doneButton, {
     show("outcome")
-    if(input$attempt == target_word()) {
-      write_word_log(target_word(), counters$assistance, state$user, 1)
+    if (task_state$answer_found == 1) {
+      # Do nothing, this happened due to Javascript lag
+    } else if(input$attempt == target_word()) {
+      local_word_log <- write_word_log(con, target_word(), task_state$assistance, session_state$user, 1, local_word_log)
       counters$correct <- counters$correct + 1
-      enable("nextButton")
-      disable("doneButton")
+      task_state$answer_found <- 1
     } else {
-      write_word_log(target_word(), counters$assistance, state$user, 0)
+      local_word_log <- write_word_log(con, target_word(), task_state$assistance, session_state$user, 0, local_word_log)
       counters$incorrect <- counters$incorrect + 1
-      counters$assistance = counters$assistance + 1
+      task_state$assistance = task_state$assistance + 1
     }
   })
 
   observeEvent(input$nextButton, {
-    counters$assistance <- 0
-    disable("nextButton")
+    task_state$assistance <- 0
+    task_state$answer_found <- 0
     updateTextInput(session, "attempt", value = "")
     hide("outcome")
-    enable("doneButton")
   })
 
   observeEvent(target_word(), {
