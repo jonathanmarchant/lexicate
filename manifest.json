@@ -1349,6 +1349,39 @@
         "Archs": "x64"
       }
     },
+    "tidyr": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "tidyr",
+        "Title": "Tidy Messy Data",
+        "Version": "1.3.2",
+        "Authors@R": "c(\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\")),\n    person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = \"aut\"),\n    person(\"Maximilian\", \"Girlich\", role = \"aut\"),\n    person(\"Kevin\", \"Ushey\", , \"kevin@posit.co\", role = \"ctb\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
+        "Description": "Tools to help to create tidy data, where each column is a\n    variable, each row is an observation, and each cell contains a single\n    value. 'tidyr' contains tools for changing the shape (pivoting) and\n    hierarchy (nesting and 'unnesting') of a dataset, turning deeply\n    nested lists into rectangular data frames ('rectangling'), and\n    extracting values out of string columns. It also includes tools for\n    working with missing values (both implicit and explicit).",
+        "License": "MIT + file LICENSE",
+        "URL": "https://tidyr.tidyverse.org, https://github.com/tidyverse/tidyr",
+        "BugReports": "https://github.com/tidyverse/tidyr/issues",
+        "Depends": "R (>= 4.1.0)",
+        "Imports": "cli (>= 3.4.1), dplyr (>= 1.1.0), glue, lifecycle (>= 1.0.3),\nmagrittr, purrr (>= 1.0.1), rlang (>= 1.1.1), stringr (>=\n1.5.0), tibble (>= 2.1.1), tidyselect (>= 1.2.1), utils, vctrs\n(>= 0.5.2)",
+        "Suggests": "covr, data.table, knitr, readr, repurrrsive (>= 1.1.0),\nrmarkdown, testthat (>= 3.0.0)",
+        "LinkingTo": "cpp11 (>= 0.4.0)",
+        "VignetteBuilder": "knitr",
+        "Config/build/compilation-database": "true",
+        "Config/Needs/website": "tidyverse/tidytemplate",
+        "Config/testthat/edition": "3",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.3.3",
+        "NeedsCompilation": "yes",
+        "Packaged": "2025-12-17 23:35:11 UTC; hadleywickham",
+        "Author": "Hadley Wickham [aut, cre],\n  Davis Vaughan [aut],\n  Maximilian Girlich [aut],\n  Kevin Ushey [ctb],\n  Posit Software, PBC [cph, fnd]",
+        "Maintainer": "Hadley Wickham <hadley@posit.co>",
+        "Repository": "CRAN",
+        "Date/Publication": "2025-12-19 09:20:02 UTC",
+        "Built": "R 4.4.3; x86_64-w64-mingw32; 2026-03-04 04:27:15 UTC; windows",
+        "Archs": "x64"
+      }
+    },
     "tidyselect": {
       "Source": "CRAN",
       "Repository": "https://cran.rstudio.com",
@@ -1529,16 +1562,16 @@
       "checksum": "97b0dfe489652326420781dce9974d52"
     },
     "app.R": {
-      "checksum": "878dffac4e67dc27438284696e96d692"
+      "checksum": "384844692c5cc48992e6b642c2b596ee"
     },
     "LICENSE": {
       "checksum": "0ccf775105029d6159a0f81d992aa92e"
     },
     "R/database.R": {
-      "checksum": "a52d8cbb74ac7bf540e477c7b944e7a7"
+      "checksum": "75bea3522d3e01066083a5a31293be74"
     },
     "R/words.R": {
-      "checksum": "072b21814df26ce917d35386f6da7fe6"
+      "checksum": "c966efc237e12f7c9a5ca5b67148f240"
     },
     "README.md": {
       "checksum": "19e8884aa8eee180c66ca293e19f1eaa"
@@ -1553,13 +1586,13 @@
       "checksum": "6fde34b165322cae75a10927c61d9910"
     },
     "www/be.m4a": {
-      "checksum": "1e265d44ca06ac0333ad1f14c3822abb"
+      "checksum": "829744c1cb6fbdd0d21d5f5a54ec1bad"
     },
     "www/by.m4a": {
       "checksum": "f69f6e3a560475a7f052abef2fa500ef"
     },
     "www/come.m4a": {
-      "checksum": "4da40944dccbf0c0ab56f2b84558eba8"
+      "checksum": "7d4bd5ce8540f2152f799a06c1648db3"
     },
     "www/do.m4a": {
       "checksum": "8b5365176c5ed8294885a0cce4648f1e"
@@ -1568,10 +1601,10 @@
       "checksum": "971c868b60e169a0499c8f2e6b224e35"
     },
     "www/full.m4a": {
-      "checksum": "df69019dfd74ec2ee11176b2d05bead7"
+      "checksum": "48076ba1bc77465aee81ad9c1d4d0e96"
     },
     "www/go.m4a": {
-      "checksum": "8481d5eb561f8209fbd257af4c435332"
+      "checksum": "55cf88b71734ecc3541daa9a0cd2c3c5"
     },
     "www/has.m4a": {
       "checksum": "7220c0e957b7801a49a83f0a5f0481a1"
@@ -1622,7 +1655,7 @@
       "checksum": "e82c9e0417e7f08ea24161e8f9203b04"
     },
     "www/pull.m4a": {
-      "checksum": "1c077c721467174198bb723cd83d754c"
+      "checksum": "170e4ffcf491606f3dd531d70edc5dd0"
     },
     "www/push.m4a": {
       "checksum": "1b9b4e0cc057f1c37eb88cb55ed3f057"
@@ -1646,7 +1679,7 @@
       "checksum": "e7788cd7145a64a5827bbcb715a22843"
     },
     "www/some.m4a": {
-      "checksum": "57fe72430cf1ade666644442b2f5c3bc"
+      "checksum": "aed0073ba8c6684f0c129baac5a1b386"
     },
     "www/the.m4a": {
       "checksum": "e91f7f759c36fc08803779a230b6136a"
