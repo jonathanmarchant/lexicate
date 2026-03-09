@@ -2,8 +2,7 @@ library(shiny)
 library(shinyjs)
 library(htmltools)
 library(bslib)
-
-local_word_log <- get_word_log(con, wordlist, "jrm")
+library(gt)
 
 jscode_enter <- '
 $(function() {
@@ -50,7 +49,8 @@ ui <- fluidPage(
     hidden(h2(textOutput("instruction"), id="h_instruction")),
     tagQuery(
       textInput("attempt", "Type the word here", "")
-    )$find("input")$addAttrs("autocomplete" = "off", "autocapitalize" = "none", "spellcheck" = "false", "data-proxy-click" = "doneButton")$allTags(),
+    )$find("input")$addAttrs("autocomplete" = "off", "autocapitalize" = "none",
+      "spellcheck" = "false", "data-proxy-click" = "doneButton")$allTags(),
     actionButton("doneButton", "Done"),
     actionButton("nextButton", "Next", disabled=TRUE),
     hidden(textOutput("outcome"))
@@ -58,18 +58,21 @@ ui <- fluidPage(
   wellPanel(
     textOutput("ticks"),
     textOutput("crosses")
-  )
+  ) #,
+  #wellPanel(
+  #  gt_output("progress_table")
+  #)
 
 )
 
 server <- function(input, output, session) {
   counters <- reactiveValues(correct = 0, incorrect = 0)
-  session_state <- reactiveValues(user = "jrm")
+  session_state <- reactiveValues(user = "jrm", local_word_log = get_word_log(con, wordlist, "jrm"))
   task_state <- reactiveValues(assistance = 0, answer_found = 0)
 
   target_word <- reactive({ 
     input$nextButton
-    local_word_log |> 
+    isolate(session_state$local_word_log) |> 
       summarise_word_log(wordlist) |> 
       choose_word()
   })
@@ -106,11 +109,11 @@ server <- function(input, output, session) {
     if (task_state$answer_found == 1) {
       # Do nothing, this happened due to Javascript lag
     } else if(input$attempt == target_word()) {
-      local_word_log <- write_word_log(con, target_word(), task_state$assistance, session_state$user, 1, local_word_log)
+      session_state$local_word_log <- write_word_log(con, target_word(), task_state$assistance, session_state$user, 1, session_state$local_word_log)
       counters$correct <- counters$correct + 1
       task_state$answer_found <- 1
     } else {
-      local_word_log <- write_word_log(con, target_word(), task_state$assistance, session_state$user, 0, local_word_log)
+      session_state$local_word_log <- write_word_log(con, target_word(), task_state$assistance, session_state$user, 0, session_state$local_word_log)
       counters$incorrect <- counters$incorrect + 1
       task_state$assistance = task_state$assistance + 1
     }
@@ -136,7 +139,10 @@ server <- function(input, output, session) {
     stringr::str_c("Incorrect: ", strrep("🚓", counters$incorrect))
   )
 
-
+  #output$progress_table <- render_gt({
+  #  target_word()
+  #  user_summary(con, session_state$user, session_state$local_word_log)
+  #})
 }
 
 shinyApp(ui, server)
