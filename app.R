@@ -51,9 +51,9 @@ ui <- fluidPage(
     tagQuery(
       textInput("attempt", "Type the word here", "")
     )$find("input")$addAttrs("autocomplete" = "off", "autocapitalize" = "none",
-      "spellcheck" = "false", "data-proxy-click" = "doneButton")$allTags(),
-    actionButton("doneButton", "Done"),
-    actionButton("nextButton", "Next", disabled=TRUE),
+      "spellcheck" = "false", "data-proxy-click" = "doneButton", "class" = "form-control-lg")$allTags(),
+    actionButton("doneButton", "Done", class="btn-lg btn-danger"),
+    actionButton("nextButton", "Next", disabled=TRUE, class="btn-lg btn-danger"),
     p(),
     h2(textOutput("instruction"), id="h_instruction")
   ),
