@@ -2263,10 +2263,10 @@
   },
   "files": {
     ".Renviron": {
-      "checksum": "97b0dfe489652326420781dce9974d52"
+      "checksum": "cef3f6fd0a9e809997d566067fa571fd"
     },
     "app.R": {
-      "checksum": "aad907e048e9b08e37e4981e0320df5a"
+      "checksum": "34b22ad649a7eef49cac7c08a6190845"
     },
     "LICENSE": {
       "checksum": "0ccf775105029d6159a0f81d992aa92e"

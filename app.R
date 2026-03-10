@@ -4,6 +4,8 @@ library(htmltools)
 library(bslib)
 library(gt)
 
+loaded_user <- dplyr::if_else(Sys.getenv("LEXICATE_USER") == "", "jrm", Sys.getenv("LEXICATE_USER"))
+
 jscode_enter <- '
 $(function() {
   var $els = $("[data-proxy-click]");
@@ -46,13 +48,15 @@ ui <- fluidPage(
   shinyjs::useShinyjs(),
   includeScript("www/howler.js"),
   wellPanel(
-    hidden(h2(textOutput("instruction"), id="h_instruction")),
     tagQuery(
       textInput("attempt", "Type the word here", "")
     )$find("input")$addAttrs("autocomplete" = "off", "autocapitalize" = "none",
       "spellcheck" = "false", "data-proxy-click" = "doneButton")$allTags(),
     actionButton("doneButton", "Done"),
     actionButton("nextButton", "Next", disabled=TRUE),
+    p(),
+    hidden(h2(textOutput("instruction"), id="h_instruction")),
+    hidden(h2(textOutput("jumbled"), id="h_jumbled")),
     hidden(textOutput("outcome"))
   ),
   wellPanel(
@@ -67,7 +71,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   counters <- reactiveValues(correct = 0, incorrect = 0)
-  session_state <- reactiveValues(user = "jrm", local_word_log = get_word_log(con, wordlist, "jrm"))
+  session_state <- reactiveValues(user = loaded_user, local_word_log = get_word_log(con, wordlist, loaded_user))
   task_state <- reactiveValues(assistance = 0, answer_found = 0)
 
   target_word <- reactive({ 
@@ -76,21 +80,25 @@ server <- function(input, output, session) {
       summarise_word_log(wordlist) |> 
       choose_word()
   })
-  output$instruction <- renderText({ c("Spell ", target_word()) })
 
   outcome_text <- eventReactive(input$doneButton, {
     dplyr::if_else(input$attempt == target_word(), "Correct", "Incorrect")
 })
   
-  output$outcome <- renderText({
-    outcome_text()
-})
+  output$instruction <- renderText({ c("Answer: ", target_word()) })
+  output$jumbled <- renderText({ c("Unjumble: ", stringi::stri_rand_shuffle(target_word())) })
+  output$outcome <- renderText({ outcome_text() })
   
   observeEvent(task_state$assistance, {
     if (task_state$assistance == 0) {
       hide("h_instruction")
+      hide("h_jumbled")
+    } else if (task_state$assistance == 1) {
+      hide("h_instruction")
+      show("h_jumbled")
     } else {
       show("h_instruction")
+      hide("h_jumbled")
     }
   })
 
