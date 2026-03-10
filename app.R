@@ -55,9 +55,7 @@ ui <- fluidPage(
     actionButton("doneButton", "Done"),
     actionButton("nextButton", "Next", disabled=TRUE),
     p(),
-    hidden(h2(textOutput("instruction"), id="h_instruction")),
-    hidden(h2(textOutput("jumbled"), id="h_jumbled")),
-    hidden(textOutput("outcome"))
+    h2(textOutput("instruction"), id="h_instruction")
   ),
   wellPanel(
     textOutput("ticks"),
@@ -81,25 +79,21 @@ server <- function(input, output, session) {
       choose_word()
   })
 
+  jumbled_word <- reactive({
+    stringi::stri_rand_shuffle(target_word())
+  })
+
   outcome_text <- eventReactive(input$doneButton, {
     dplyr::if_else(input$attempt == target_word(), "Correct", "Incorrect")
 })
-  
-  output$instruction <- renderText({ c("Answer: ", target_word()) })
-  output$jumbled <- renderText({ c("Unjumble: ", stringi::stri_rand_shuffle(target_word())) })
-  output$outcome <- renderText({ outcome_text() })
-  
-  observeEvent(task_state$assistance, {
-    if (task_state$assistance == 0) {
-      hide("h_instruction")
-      hide("h_jumbled")
-    } else if (task_state$assistance == 1) {
-      hide("h_instruction")
-      show("h_jumbled")
-    } else {
-      show("h_instruction")
-      hide("h_jumbled")
-    }
+
+  output$instruction <- renderText({
+    dplyr::case_when(    
+      task_state$answer_found == 1 ~ "Correct",
+      task_state$assistance >= 2 ~ stringr::str_c("Answer: ", target_word()),
+      task_state$assistance == 1 ~ stringr::str_c("Unjumble: ", jumbled_word()),
+      .default = "Spell the word"
+  )
   })
 
   observeEvent(task_state$answer_found, {
@@ -113,7 +107,6 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$doneButton, {
-    show("outcome")
     if (task_state$answer_found == 1) {
       # Do nothing, this happened due to Javascript lag
     } else if(input$attempt == target_word()) {
@@ -131,7 +124,6 @@ server <- function(input, output, session) {
     task_state$assistance <- 0
     task_state$answer_found <- 0
     updateTextInput(session, "attempt", value = "")
-    hide("outcome")
   })
 
   observeEvent(target_word(), {
@@ -151,6 +143,6 @@ server <- function(input, output, session) {
   #  target_word()
   #  user_summary(con, session_state$user, session_state$local_word_log)
   #})
-}
+  }
 
 shinyApp(ui, server)
