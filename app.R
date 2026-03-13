@@ -4,7 +4,10 @@ library(htmltools)
 library(bslib)
 library(gt)
 
+options(bslib.color_contrast_warnings = FALSE)
+
 loaded_user <- dplyr::if_else(Sys.getenv("LEXICATE_USER") == "", "jrm", Sys.getenv("LEXICATE_USER"))
+wordlist <- create_wordlist(con)
 
 jscode_enter <- '
 $(function() {
@@ -32,8 +35,7 @@ ui <- fluidPage(
     secondary = "#000000",
     success = "#009E73",
     base_font = font_google("Inter"),
-    code_font = font_google("JetBrains Mono"),
-    "min-contrast-ratio" = 1.1
+    code_font = font_google("JetBrains Mono")
   ),
 
   tags$head(tags$script(HTML(jscode_enter))),
@@ -54,7 +56,10 @@ ui <- fluidPage(
       "spellcheck" = "false", "data-proxy-click" = "doneButton", "class" = "form-control-lg")$allTags(),
     actionButton("doneButton", "Done", class="btn-lg btn-danger"),
     actionButton("nextButton", "Next", disabled=TRUE, class="btn-lg btn-danger"),
+    actionButton("replayButton", "🗣️", class="btn-lg"),
+    actionButton("sentenceButton", "Sentence", class="btn-lg"),
     p(),
+    hidden(h3(textOutput("sentence"), id="h_sentence", style="color:black")),
     h2(textOutput("instruction"), id="h_instruction")
   ),
   wellPanel(
@@ -96,6 +101,8 @@ server <- function(input, output, session) {
   )
   })
 
+  output$sentence <- renderText({ context_sentence(target_word(), wordlist) })
+
   observeEvent(task_state$answer_found, {
     if (task_state$answer_found == 0) {
       enable("doneButton")
@@ -126,8 +133,23 @@ server <- function(input, output, session) {
     updateTextInput(session, "attempt", value = "")
   })
 
+  observeEvent(input$replayButton, {
+    replay_js <- "window.wordsound.play();"
+    shinyjs::runjs(replay_js)
+  })
+
+  observeEvent(input$sentenceButton, {
+    toggle("h_sentence")
+  })
+
   observeEvent(target_word(), {
-    new_js <- stringr::str_c("var music = new Howl({src: ['", stringr::str_to_lower(target_word()) , ".m4a']});  music.play();")
+    if(is_homophone(target_word(), wordlist)) {
+      show("h_sentence")
+    } else {
+      hide("h_sentence")
+    }
+
+    new_js <- stringr::str_c("window.wordsound = new Howl({src: ['", stringr::str_to_lower(target_word()) , ".m4a']});  window.wordsound.play();")
     shinyjs::runjs(new_js)
   })
 

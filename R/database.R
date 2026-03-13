@@ -24,6 +24,12 @@ write_word_log <- function(con, word, assistance_level = 0, user = "jrm", succes
   bind_rows(local_word_log, row)
 }
 
+create_wordlist <- function(con, min_difficulty = 1, max_difficulty = 2) {
+  tbl(con, I("lexdata.wordlist")) |> 
+    collect() |> 
+    filter(difficulty >= min_difficulty & difficulty <= max_difficulty)
+}
+
 get_word_log <- function(con, wordlist, selected_user) {
   word_vector <- wordlist |> pull("word")
 

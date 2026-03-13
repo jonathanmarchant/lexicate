@@ -1,29 +1,6 @@
 library(dplyr)
 library(tibble)
 
-y1_wordlist <- tibble(
-  word = c("a", "are", "ask", "be", "by", "come", "do", "friend", "full", "go",
-  "has", "he", "here", "his", "house", "I", "is", "love", "me", "my", "no", "of", "once",
-  "one", "our", "pull", "push", "put", "said", "says", "school", "she", "so", "some", "the",
-  "there", "they", "to", "today", "was", "we", "were", "where", "you", "your")) |> 
-  mutate(difficulty = 1)
-
-y2_wordlist <- tibble(
-  word = c("after", "again", "any", "bath", "beautiful", "because", "behind", "both", "break",
-  "busy", "child", "children", "class", "climb", "clothes", "cold", "could", "door", "even", "every",
-  "everybody", "eye", "fast", "father", "find", "floor", "gold", "grass", "great", "half", "hold",
-  "hour", "improve", "kind", "last", "many", "mind", "money", "most", "move", "Mr", "Mrs", "old",
-  "only", "parents", "pass", "past", "path", "people", "plant", "poor", "pretty", "prove", "should",
-  "steak", "sugar", "sure", "told", "water", "who", "whole", "wild", "would")) |> 
-  mutate(difficulty = 2)
-
-create_wordlist <- function(min_difficulty = 1, max_difficulty = 2) {
-  bind_rows(y1_wordlist, y2_wordlist) |> 
-    filter(difficulty >= min_difficulty & difficulty <= max_difficulty)
-}
-
-wordlist <- create_wordlist()
-
 summarise_word_log <- function(word_log, wordlist) {
   summary <- word_log |> 
     filter(assistance_level == 0) |> 
@@ -31,7 +8,8 @@ summarise_word_log <- function(word_log, wordlist) {
     slice_max(event_datetime, n = 5) |> 
     summarise(attempts = n(),
               correct = sum(success_indicator)) |> 
-    full_join(wordlist, by="word") |> 
+    full_join(wordlist |> select(-sample_sentence, -homophone),
+      by="word") |> 
     tidyr::replace_na(list(attempts = 0, correct = 0))
 
   summary
@@ -58,4 +36,18 @@ choose_word <- function(log_summary) {
     mutate(sample_weight = 11 - row_number()) |> 
     slice_sample(n = 1, weight_by = sample_weight) |> 
     pull(word)
+}
+
+context_sentence <- function(current_word, wordlist) {
+  wordlist |> 
+    filter(word == current_word) |> 
+    pull(sample_sentence)
+}
+
+is_homophone <- function(current_word, wordlist) {
+  result <- wordlist |> 
+    filter(word == current_word) |> 
+    pull(homophone)
+
+  if_else(result == 1, TRUE, FALSE)
 }
