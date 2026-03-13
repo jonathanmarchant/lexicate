@@ -2266,16 +2266,16 @@
       "checksum": "cef3f6fd0a9e809997d566067fa571fd"
     },
     "app.R": {
-      "checksum": "bb31995ae280c3ae24ce0be23c2ba8f3"
+      "checksum": "522bd83e18719be5cca4f1882b3dead3"
     },
     "LICENSE": {
       "checksum": "0ccf775105029d6159a0f81d992aa92e"
     },
     "R/database.R": {
-      "checksum": "1a91cf321f5a79ddbe584db960a0a3e9"
+      "checksum": "13440e1c0f9f1902323dfe016ffc92fb"
     },
     "R/words.R": {
-      "checksum": "fd32f8e065a97516c6e354df81e081c1"
+      "checksum": "2d046e467e9a65b58a7c2d0a0fe5d7ea"
     },
     "README.md": {
       "checksum": "19e8884aa8eee180c66ca293e19f1eaa"
