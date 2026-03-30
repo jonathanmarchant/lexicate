@@ -26,14 +26,14 @@ choose_word <- function(log_summary) {
       correct == 0 & difficulty < max_difficulty ~ 4,
       attempts == 0 ~ 5,
       correct == 0 ~ 6,
-      correct == 5 ~ 7,
+      correct == 5 ~ 7 + runif(n()),
       .default = 8 
     ),
     length = stringr::str_length(word)
   ) |> 
     arrange(priority, length, word) |> 
     slice_head(n = 10) |> 
-    mutate(sample_weight = 11 - row_number()) |> 
+    mutate(sample_weight = if_else(priority < 7, 11 - row_number(), 1)) |> 
     slice_sample(n = 1, weight_by = sample_weight) |> 
     pull(word)
 }
